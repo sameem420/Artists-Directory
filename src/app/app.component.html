@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card mb-3 mt-3">
+        <div class="card-header">
+          <h3 class="text-center">Artists Directory</h3>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">
+            <label for="exampleFormControlInput1" class="form-label"
+              >For Artist : {{ query }}</label
+            >
+          </h5>
+          <div class="mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="exampleFormControlInput1"
+              placeholder="Artist Name"
+              [(ngModel)]="query"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  @if (query) {
+  <ul class="list-group mb-3">
+    @for (artist of artists | searchArtists : query; track $index) {
+    <li
+      class="list-group-item"
+      (click)="showArtist(artist); query = ''"
+      [style.backgroundColor]="artist.highlight ? '#EEE' : '#FFF'"
+    >
+      <app-artists [artist]="artist"></app-artists>
+    </li>
+    } @empty {
+    <li>There are no items.</li>
+    }
+  </ul>
+  } @if (currentArtist != '' && currentArtist != {}) {
+  <app-artist-details [artist]="currentArtist"></app-artist-details>
+  }
+</div>

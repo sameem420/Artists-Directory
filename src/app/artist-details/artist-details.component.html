@@ -1,0 +1,16 @@
+<div class="row justify-content-center mb-3">
+  <div class="card col-md-3">
+    <img
+      [src]="'assets/images/' + artist.shortname + '_tn.jpg'"
+      class="card-img-top rounded pt-2"
+      alt="{{ artist.name }}"
+    />
+    <div class="card-body">
+      <h4 class="card-title">{{ artist.name }}</h4>
+      <p>{{ artist.reknown }}</p>
+      <p class="card-text">
+        {{ artist.bio }}
+      </p>
+    </div>
+  </div>
+</div>
